@@ -120,6 +120,40 @@ class Root extends Sprite {
 		Starling.current.stage.addEventListener(KeyboardEvent.KEY_DOWN, flip);
 	}
 
+	public function movement(event:KeyboardEvent) {
+	    if (event.keyCode == Keyboard.LEFT) {
+	    	player.x -= 10; //placeholder
+	    }
+	    else if(event.keyCode == Keyboard.RIGHT) {
+	    	player.x += 10; //placeholder
+	    }
+	    else if(event.keyCode == Keyboard.UP) {
+	    	player.y -= 10; //placeholder
+	    }
+	    else if(event.keyCode == Keyboard.DOWN) {
+	    	player.y += 10; //placeholder
+	    }
+	    if(player.x <= 0){
+	    	player.x = 0;  //placeholder
+	    }
+	    else if(player.x >= stage.stageWidth){
+	    	player.x = stage.stageWidth;
+	    }
+	    else if(player.y <= 0){
+	    	player.y = 0;  //placeholder
+	    }
+	    else if(player.y >= stage.stageHeight){
+	    	player.y = stage.stageHeight; //placeholder
+	    }
+	    for(child in children){ //pseudo-code, will check items on stage and see if they intersect with the player, then will prompt the player for action based on the item.
+	    	var bound1 = player.bounds;
+	    	var bound2 = child.bounds;
+	    	if bound1.intersects(bound2){
+	    		if (child == "berrybush")
+	    	}
+	    }
+	}
+
 	public function continueScreen() {
 		Starling.current.stage.removeEventListeners();
 		var continueScreen = new ContinueScreen();
@@ -208,7 +242,7 @@ class Menu extends Sprite {
 		creditsButton.y = 400;
 		creditsButton.name = "credits";
 		this.addChild(creditsButton);
-	}
+`	}
 }
 
 class ContinueScreen extends Sprite {
