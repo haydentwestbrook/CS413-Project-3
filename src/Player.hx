@@ -3,13 +3,14 @@ import starling.core.Starling;
 import starling.display.Sprite;
 import starling.utils.HAlign;
 import starling.utils.VAlign;
-
+import starling.display.Image;
+import Root;
 
 class Player extends Sprite {
 	
 	public var textfield:TextField;
-	textfield.hAlign = HAlign.MIDDLE;
-	textfield.vAlign = VAlign.TOP;	
+	//textfield.hAlign = HAlign.MIDDLE;
+	//textfield.vAlign = VAlign.TOP;	
 	
 	/*
 	basic code for registering bitmap font (i think). 
@@ -24,12 +25,18 @@ class Player extends Sprite {
 	public var hunger:Int;
 	public var inventory:Array<String> = new Array();
 	public var ranNum:Int;
+	public var player:Image;
+
 
 	public function new () {
 		super();
 		ranNum = Math.round(Math.random() * 6);
 		thirst = 10-ranNum;
 		hunger = 4+ranNum;
+		player = new Image(Root.assets.getTexture("berrybush"));
+		player.x = 325;
+		player.y = 325;
+		addChild(player);
 	}
 	
 	public function addToInv(name:String) {
@@ -38,7 +45,7 @@ class Player extends Sprite {
 	}
 	public function displayInv() {
 		invString = "";
-		for (var i = 0; i < inventory.length; i++) {
+		for (i in 0...inventory.length) {
 			invString += inventory[i] + " ";
 		}
 		textfield = new TextField(350, 200, invString); // Adjust for heigh and width of game
@@ -51,4 +58,3 @@ class Player extends Sprite {
 
 
 
-}
