@@ -4,7 +4,9 @@ import starling.display.Sprite;
 import starling.utils.HAlign;
 import starling.utils.VAlign;
 import starling.display.Image;
+
 import Root;
+
 
 class Player extends Sprite {
 	
@@ -25,11 +27,11 @@ class Player extends Sprite {
 	public var hunger:Int;
 	public var inventory:Array<String> = new Array();
 	public var ranNum:Int;
-	public var player:Image;
-
+	public var playerImg:Image;
 
 	public function new () {
 		super();
+		playerImg = Root.assets.getTexture("player");
 		ranNum = Math.round(Math.random() * 6);
 		thirst = 10-ranNum;
 		hunger = 4+ranNum;
