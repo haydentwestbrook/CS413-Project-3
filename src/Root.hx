@@ -15,6 +15,7 @@ class Root extends Sprite {
 
 	public static var assets:AssetManager;
 	public var game:Game;
+	public var player:Player;
 
 	public function new() {
 		super();
@@ -34,6 +35,7 @@ class Root extends Sprite {
 		assets.enqueue("assets/menubutton.png");
 		assets.enqueue("assets/menuselect.mp3");
 		assets.enqueue("assets/tutorialBackground.png");
+		assets.enqueue("assets/berrybush.png");
 
 		assets.loadQueue(function onProgress(ratio:Float) {
 			
@@ -82,8 +84,6 @@ class Root extends Sprite {
 		} 
 		else if(button.name == "next") {
 		 	Starling.current.stage.removeEventListeners();
-		 	Starling.current.stage.addEventListener(KeyboardEvent.KEY_DOWN, flip);
-			game.nextLevel(5);
 			removeChildAt(1);
 		} 
 		else if(button.name == "back") {
@@ -115,24 +115,48 @@ class Root extends Sprite {
                         }
         });
 		removeEventListeners();
-		game = new Game(5);
-		addChild(game);
-		Starling.current.stage.addEventListener(KeyboardEvent.KEY_DOWN, flip);
+		player = new Player();
+		addChild(player);
+		Starling.current.stage.addEventListener(KeyboardEvent.KEY_DOWN, movement);
 	}
 
-	public function continueScreen() {
-		Starling.current.stage.removeEventListeners();
-		var continueScreen = new ContinueScreen();
-		continueScreen.alpha = 0;
-		addChild(continueScreen);
-		//Tween in continue screen
-		Starling.juggler.tween(continueScreen, 0.25, {
-                    transition: Transitions.EASE_IN,
-                        delay: .25,
-                        alpha: 1.0
-        });
-        addEventListener(Event.TRIGGERED, menuButtonClicked);
+	public function movement(event:KeyboardEvent) {
+	    if (event.keyCode == Keyboard.LEFT) {
+	    	player.x -= 10; //placeholder
+	    }
+	    else if(event.keyCode == Keyboard.RIGHT) {
+	    	player.x += 10; //placeholder
+	    }
+	    else if(event.keyCode == Keyboard.UP) {
+	    	player.y -= 10; //placeholder
+	    }
+	    else if(event.keyCode == Keyboard.DOWN) {
+	    	player.y += 10; //placeholder
+	    }
+	    if(player.x <= 0){
+	    	player.x = 0;  //placeholder
+	    }
+	    else if(player.x >= stage.stageWidth){
+	    	player.x = stage.stageWidth;
+	    }
+	    else if(player.y <= 0){
+	    	player.y = 0;  //placeholder
+	    }
+	    else if(player.y >= stage.stageHeight){
+	    	player.y = stage.stageHeight; //placeholder
+	    }
+	    /*for(child in children){ //pseudo-code, will check items on stage and see if they intersect with the player, then will prompt the player for action based on the item.
+	    	var bound1 = player.bounds;
+	    	var bound2 = child.bounds;
+	    	if bound1.intersects(bound2){
+	    		if (child == "berrybush"){
+	    			//TODO
+	    		}
+	    	}
+	    }*/
 	}
+
+
 
 
 	public function showTutorial() {
