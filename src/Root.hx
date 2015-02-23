@@ -115,49 +115,9 @@ class Root extends Sprite {
                         }
         });
 		removeEventListeners();
-		player = new Player();
-		addChild(player);
-		Starling.current.stage.addEventListener(KeyboardEvent.KEY_DOWN, movement);
+		game = new Game();
+		addChild(game);
 	}
-
-	public function movement(event:KeyboardEvent) {
-	    if (event.keyCode == Keyboard.LEFT) {
-	    	player.x -= 10; //placeholder
-	    }
-	    else if(event.keyCode == Keyboard.RIGHT) {
-	    	player.x += 10; //placeholder
-	    }
-	    else if(event.keyCode == Keyboard.UP) {
-	    	player.y -= 10; //placeholder
-	    }
-	    else if(event.keyCode == Keyboard.DOWN) {
-	    	player.y += 10; //placeholder
-	    }
-	    if(player.x <= 0){
-	    	player.x = 0;  //placeholder
-	    }
-	    else if((player.x + player.width) >= stage.stageWidth){
-	    	player.x = stage.stageWidth - player.width;
-	    }
-	    if(player.y <= 0){
-	    	player.y = 0;  //placeholder
-	    }
-	    else if((player.y + player.height)>= stage.stageHeight){
-	    	player.y = stage.stageHeight - player.height; //placeholder
-	    }
-	    /*for(child in children){ //pseudo-code, will check items on stage and see if they intersect with the player, then will prompt the player for action based on the item.
-	    	var bound1 = player.bounds;
-	    	var bound2 = child.bounds;
-	    	if bound1.intersects(bound2){
-	    		if (child == "berrybush"){
-	    			//TODO
-	    		}
-	    	}
-	    }*/
-	}
-
-
-
 
 	public function showTutorial() {
 		//Tween out the menu
