@@ -1,3 +1,4 @@
+import starling.text.TextField;
 import starling.display.Sprite;
 import starling.utils.AssetManager;
 import starling.display.Button;
@@ -28,10 +29,11 @@ class Encounter extends Sprite {
 		//background = new Image(Root.assets.getTexture(backgroundImage));
 		text = textString;
 
-		Starling.current.stage.addEventListener(KeyboardEvent.KEY_DOWN, activateEncounter);
+		//Starling.current.stage.addEventListener(KeyboardEvent.KEY_DOWN, activateEncounter);
 	}
 
-	public function activateEncounter(event:KeyboardEvent) {
-
+	public function activateEncounter() {
+		var textField = new TextField(100,100, text);
+		addChild(textField);
 	}
 }

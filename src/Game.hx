@@ -33,6 +33,8 @@ class Game extends Sprite {
 	}
 
 	public function movement(event:KeyboardEvent) {
+		var oldX = player.x;
+		var oldY = player.y;
 	    if (event.keyCode == Keyboard.LEFT) {
 	    	player.x -= 10; //placeholder
 	    }
@@ -49,19 +51,21 @@ class Game extends Sprite {
 	    	player.x = 0;  //placeholder
 	    }
 	    else if((player.x + player.width) >= stage.stageWidth){
-	    	player.x = stage.stageWidth - player.width;
+	    	player.x = oldX;
 	    }
 	    if(player.y <= 0){
 	    	player.y = 0;  //placeholder
 	    }
 	    else if((player.y + player.height)>= stage.stageHeight){
-	    	player.y = stage.stageHeight - player.height; //placeholder
+	    	player.y = oldY; //placeholder
 	    }
 	    for(encounter in encounters){ //pseudo-code, will check items on stage and see if they intersect with the player, then will prompt the player for action based on the item.
 	    	var bound1 = player.bounds;
 	    	var bound2 = encounter.bounds;
 	    	if (bound1.intersects(bound2)){
-	    		trace("Contact");
+	    		player.x = oldX;
+	    		player.y = oldY;
+	    		encounter.activateEncounter();
 	    	}
 	    }
 	}
