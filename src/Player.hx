@@ -31,7 +31,6 @@ class Player extends Sprite {
 	public var inventory:Array<String> = new Array();
 	public var ranNum:Int;
 	public var playerImg:Image;
-	public var player:Image;
 	
 	public function new () {
 		super();
@@ -39,46 +38,10 @@ class Player extends Sprite {
 		ranNum = Math.round(Math.random() * 6);
 		thirst = 10-ranNum;
 		hunger = 4+ranNum;
-		player = new Image(Root.assets.getTexture("berrybush"));
-		addChild(player);
-		Starling.current.stage.addEventListener(KeyboardEvent.KEY_DOWN, movement);
+		playerImg = new Image(Root.assets.getTexture("player"));
+		addChild(playerImg);
 	}
 
-	public function movement(event:KeyboardEvent) {
-	    if (event.keyCode == Keyboard.LEFT) {
-	    	player.x -= 10; //placeholder
-	    }
-	    else if(event.keyCode == Keyboard.RIGHT) {
-	    	player.x += 10; //placeholder
-	    }
-	    else if(event.keyCode == Keyboard.UP) {
-	    	player.y -= 10; //placeholder
-	    }
-	    else if(event.keyCode == Keyboard.DOWN) {
-	    	player.y += 10; //placeholder
-	    }
-	    if(player.x <= 0){
-	    	player.x = 0;  //placeholder
-	    }
-	    else if((player.x + player.width) >= stage.stageWidth){
-	    	player.x = stage.stageWidth - player.width;
-	    }
-	    if(player.y <= 0){
-	    	player.y = 0;  //placeholder
-	    }
-	    else if((player.y + player.height)>= stage.stageHeight){
-	    	player.y = stage.stageHeight - player.height; //placeholder
-	    }
-	    /*for(child in children){ //pseudo-code, will check items on stage and see if they intersect with the player, then will prompt the player for action based on the item.
-	    	var bound1 = player.bounds;
-	    	var bound2 = child.bounds;
-	    	if bound1.intersects(bound2){
-	    		if (child == "berrybush"){
-	    			//TODO
-	    		}
-	    	}
-	    }*/
-	}
 	
 	public function addToInv(name:String) {
 		inventory.push(name);
