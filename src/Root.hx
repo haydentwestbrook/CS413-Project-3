@@ -37,6 +37,9 @@ class Root extends Sprite {
 		assets.enqueue("assets/tutorialBackground.png");
 		assets.enqueue("assets/berrybush.png");
 		assets.enqueue("assets/player.png");
+		assets.enqueue("assets/encounterScreen.png");
+		assets.enqueue("assets/optionbutton.png");
+		assets.enqueue("assets/closebutton.png");
 
 		assets.loadQueue(function onProgress(ratio:Float) {
 			
