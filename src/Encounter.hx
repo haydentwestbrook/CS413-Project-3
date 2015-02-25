@@ -13,11 +13,11 @@ import flash.ui.Keyboard;
 
 class Encounter extends Sprite {
 
-	var image:Image;
-	var dialogBox:DialogBox;
-	var visited:Bool;
+	public var image:Image;
+	public var dialogBox:DialogBox;
+	public var visited:Bool;
 
-	public function new(texture:String, textString:String, options:Array<String>, rightAnswer:Int, rightText:String, wrongText:String, x:Int, y:Int) {
+	public function new(texture:String, textString:String, options:Array<String>, rightAnswer:Int, rightText:String, wrongText:String, rightTexture:String, wrongTexture:String, x:Int, y:Int) {
 		super();
 
 		image = new Image(Root.assets.getTexture(texture));
@@ -25,7 +25,7 @@ class Encounter extends Sprite {
 		image.y = y;
 		addChild(image);
 
-		dialogBox = new DialogBox(textString, options, rightAnswer, rightText, wrongText);
+		dialogBox = new DialogBox(textString, options, rightAnswer, rightText, wrongText, rightTexture, wrongTexture);
 		
 
 		//Starling.current.stage.addEventListener(KeyboardEvent.KEY_DOWN, activateEncounter);
@@ -57,12 +57,16 @@ class DialogBox extends Sprite {
 	var closeButton:Button;
 	var rightText:String;
 	var wrongText:String;
+	var rightTexture:String;
+	var wrongTexture:String;
 
-	public function new(textString:String, options:Array<String>, rightAnswer:Int, rightText:String, wrongText:String) {
+	public function new(textString:String, options:Array<String>, rightAnswer:Int, rightText:String, wrongText:String, rightTexture:String, wrongTexture:String) {
 		super();
 		this.rightAnswer = rightAnswer;
 		this.rightText = rightText;
 		this.wrongText = wrongText;
+		this.rightTexture = rightTexture;
+		this.wrongTexture = wrongTexture;
 
 		background = new Image(Root.assets.getTexture("encounterScreen"));
 		addChild(background);
@@ -115,6 +119,15 @@ class DialogBox extends Sprite {
 
 	public function success() {
 		text.text = rightText;
+		var x = cast(parent,Encounter).image.x;
+		var y = cast(parent,Encounter).image.y;
+		parent.removeChild(cast(parent, Encounter).image);
+		if(rightTexture != "") {
+			var image = new Image(Root.assets.getTexture(rightTexture));
+			image.x = x;
+			image.y = y;
+			cast (parent, Encounter).addChild(image);
+		}
 
 		closeButton = new Button(Root.assets.getTexture("closebutton"));
 		closeButton.x = 275;
@@ -125,6 +138,15 @@ class DialogBox extends Sprite {
 
 	public function fail() {
 		text.text = wrongText;
+		var x = cast(parent,Encounter).image.x;
+		var y = cast(parent,Encounter).image.y;
+		removeChild(cast(parent, Encounter).image);
+		if(rightTexture != "") {
+			var image = new Image(Root.assets.getTexture(rightTexture));
+			image.x = x;
+			image.y = y;
+			cast (parent, Encounter).addChild(image);
+		}
 
 		closeButton = new Button(Root.assets.getTexture("closebutton"));
 		closeButton.x = 275;
