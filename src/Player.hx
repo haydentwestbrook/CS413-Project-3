@@ -39,6 +39,8 @@ class Player extends Sprite {
 		thirst = 10-ranNum;
 		hunger = 4+ranNum;
 		playerImg = new Image(Root.assets.getTexture("player"));
+		this.x = 450;
+		this.y = 30;
 		addChild(playerImg);
 	}
 

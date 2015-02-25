@@ -36,6 +36,7 @@ class Root extends Sprite {
 		assets.enqueue("assets/menuselect.mp3");
 		assets.enqueue("assets/tutorialBackground.png");
 		assets.enqueue("assets/berrybush.png");
+		assets.enqueue("assets/bear.png");
 		assets.enqueue("assets/player.png");
 		assets.enqueue("assets/encounterScreen.png");
 		assets.enqueue("assets/optionbutton.png");
@@ -263,8 +264,10 @@ class GameOver extends Sprite {
 
 	public function new() {
 		super();
+		Starling.current.stage.removeEventListeners();
 		background = new Image(Root.assets.getTexture("gameover"));
 		addChild(background);
+		addEventListener(Event.TRIGGERED, cast (parent, Root).menuButtonClicked);
 		returnButton = new Button(Root.assets.getTexture("menubutton"));
 		returnButton.x = 250;
 		returnButton.y = 300;

@@ -68,18 +68,18 @@ class DialogBox extends Sprite {
 		addChild(background);
 		
 
-		text = new TextField(200, 300, textString);
+		text = new TextField(250, 300, textString);
 		text.hAlign = starling.utils.HAlign.LEFT;
 		text.vAlign = starling.utils.VAlign.TOP;
 		text.fontSize = 14;
-		text.x = 225;
-		text.y = 10;
+		text.x = 275;
+		text.y = 40;
 		addChild(text);
 
 		buttons = new Array<Button>();
 		var y = 40;
 		for(option in options) {
-			var optionText = new TextField(100, 30, option);
+			var optionText = new TextField(250, 30, option);
 			optionText.hAlign = starling.utils.HAlign.LEFT;
 			optionText.fontSize = 14;
 			optionText.x = 90;
@@ -117,7 +117,7 @@ class DialogBox extends Sprite {
 		text.text = rightText;
 
 		closeButton = new Button(Root.assets.getTexture("closebutton"));
-		closeButton.x = 225;
+		closeButton.x = 275;
 		closeButton.y = 200;
 		closeButton.name = "close";
 		addChild(closeButton);
@@ -127,7 +127,7 @@ class DialogBox extends Sprite {
 		text.text = wrongText;
 
 		closeButton = new Button(Root.assets.getTexture("closebutton"));
-		closeButton.x = 225;
+		closeButton.x = 275;
 		closeButton.y = 200;
 		closeButton.name = "close";
 		addChild(closeButton);

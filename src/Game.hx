@@ -18,14 +18,17 @@ class Game extends Sprite {
 	public function new() {
 		super();
 
+		var background:Image = new Image(Root.assets.getTexture("background"));
+		addChild(background);
+
 		//Add player
 		player = new Player();	
 		addChild(player);
 
 		//Add encounters
 		encounters = new Array<Encounter>();
-		encounters.push(new Encounter("berrybush", "Its a berry bush!", ["Eat the berries", "Leave them alone"], 1, 
-									  "Good Job! You should never eat a berry you can't identify.", 
+		encounters.push(new Encounter("berrybush", "Its a berry bush! You are unable to idenitify the type of berries it has. What do you do?", ["Eat the berries", "Leave them alone"], 1, 
+									  "Good Job! You should never eat something you are unable identify.", 
 									  "Oh no! The berries are poisonous! You should never eat anything you can not identify.", 200, 300));
 		//Add encounters to stage
 		for(encounter in encounters) {
