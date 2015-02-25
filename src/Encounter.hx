@@ -17,7 +17,7 @@ class Encounter extends Sprite {
 	var dialogBox:DialogBox;
 	var visited:Bool;
 
-	public function new(texture:String, textString:String, options:Array<String>, rightAnswer:Int, x:Int, y:Int) {
+	public function new(texture:String, textString:String, options:Array<String>, rightAnswer:Int, rightText:String, wrongText:String, x:Int, y:Int) {
 		super();
 
 		image = new Image(Root.assets.getTexture(texture));
@@ -25,7 +25,7 @@ class Encounter extends Sprite {
 		image.y = y;
 		addChild(image);
 
-		dialogBox = new DialogBox(textString, options, rightAnswer);
+		dialogBox = new DialogBox(textString, options, rightAnswer, rightText, wrongText);
 		
 
 		//Starling.current.stage.addEventListener(KeyboardEvent.KEY_DOWN, activateEncounter);
@@ -55,18 +55,22 @@ class DialogBox extends Sprite {
 	var rightAnswer:Int;
 	var buttons:Array<Button>;
 	var closeButton:Button;
+	var rightText:String;
+	var wrongText:String;
 
-	public function new(textString:String, options:Array<String>, rightAnswer:Int) {
+	public function new(textString:String, options:Array<String>, rightAnswer:Int, rightText:String, wrongText:String) {
 		super();
-
-		trace(rightAnswer);
+		this.rightAnswer = rightAnswer;
+		this.rightText = rightText;
+		this.wrongText = wrongText;
 
 		background = new Image(Root.assets.getTexture("encounterScreen"));
 		addChild(background);
 		
 
-		text = new TextField(200, 50, textString);
+		text = new TextField(200, 300, textString);
 		text.hAlign = starling.utils.HAlign.LEFT;
+		text.vAlign = starling.utils.VAlign.TOP;
 		text.fontSize = 14;
 		text.x = 225;
 		text.y = 10;
@@ -76,9 +80,10 @@ class DialogBox extends Sprite {
 		var y = 40;
 		for(option in options) {
 			var optionText = new TextField(100, 30, option);
+			optionText.hAlign = starling.utils.HAlign.LEFT;
 			optionText.fontSize = 14;
-			optionText.x = 75;
-			optionText.y = y;
+			optionText.x = 90;
+			optionText.y = y + 6;
 			addChild(optionText);
 
 			var button = new Button(Root.assets.getTexture("optionbutton"));
@@ -101,7 +106,7 @@ class DialogBox extends Sprite {
 		for(button in buttons) {
 			if(button == buttonEvent && i == rightAnswer) {
 				success();
-			} else {
+			} else if(button == buttonEvent && i != rightAnswer) {
 				fail();
 			}
 			i++;
@@ -109,7 +114,7 @@ class DialogBox extends Sprite {
 	}
 
 	public function success() {
-		text.text = "Good job!";
+		text.text = rightText;
 
 		closeButton = new Button(Root.assets.getTexture("closebutton"));
 		closeButton.x = 225;
@@ -119,7 +124,7 @@ class DialogBox extends Sprite {
 	}
 
 	public function fail() {
-		text.text = "Wrong answer!";
+		text.text = wrongText;
 
 		closeButton = new Button(Root.assets.getTexture("closebutton"));
 		closeButton.x = 225;

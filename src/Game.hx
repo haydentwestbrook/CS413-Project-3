@@ -24,7 +24,9 @@ class Game extends Sprite {
 
 		//Add encounters
 		encounters = new Array<Encounter>();
-		encounters.push(new Encounter("berrybush", "Its a berry bush!", ["option1", "option2", "option3", "option4"], 1, 200, 300));
+		encounters.push(new Encounter("berrybush", "Its a berry bush!", ["Eat the berries", "Leave them alone"], 1, 
+									  "Good Job! You should never eat a berry you can't identify.", 
+									  "Oh no! The berries are poisonous! You should never eat anything you can not identify.", 200, 300));
 		//Add encounters to stage
 		for(encounter in encounters) {
 			addChild(encounter);
