@@ -57,7 +57,7 @@ class Game extends Sprite {
 		encounters.push(new Encounter("bear", "Its a bear!", ["Fight!", "Run", "Play dead"], 2, 
 									  "Good Job!", 
 									  "Oh no! The bear ate you.", 
-									  "", "bear", 500, 500, player, "test", "test"));
+									  "", "bear", 1100, 400, player, "test", "test"));
 		//Add encounters to stage
 		for(encounter in encounters) {
 			addChild(encounter);

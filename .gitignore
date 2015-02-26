@@ -5,3 +5,5 @@ makefile
 game.swf
 game.swf
 makefile
+*.swf
+*.swf
