@@ -10,6 +10,7 @@ import starling.display.DisplayObject;
 import starling.events.Event;
 import starling.events.KeyboardEvent;
 import flash.ui.Keyboard;
+import Root;
 
 class Encounter extends Sprite {
 
@@ -17,7 +18,7 @@ class Encounter extends Sprite {
 	public var dialogBox:DialogBox;
 	public var visited:Bool;
 
-	public function new(texture:String, textString:String, options:Array<String>, rightAnswer:Int, rightText:String, wrongText:String, rightTexture:String, wrongTexture:String, x:Int, y:Int) {
+	public function new(texture:String, textString:String, options:Array<String>, rightAnswer:Int, rightText:String, wrongText:String, rightTexture:String, wrongTexture:String, x:Int, y:Int,player, bonusOption:String, reqItem:String) {
 		super();
 
 		image = new Image(Root.assets.getTexture(texture));
@@ -25,7 +26,7 @@ class Encounter extends Sprite {
 		image.y = y;
 		addChild(image);
 
-		dialogBox = new DialogBox(textString, options, rightAnswer, rightText, wrongText, rightTexture, wrongTexture);
+		dialogBox = new DialogBox(textString, options, rightAnswer, rightText, wrongText, rightTexture, wrongTexture, player, bonusOption, reqItem);
 		
 
 		//Starling.current.stage.addEventListener(KeyboardEvent.KEY_DOWN, activateEncounter);
@@ -59,14 +60,18 @@ class DialogBox extends Sprite {
 	var wrongText:String;
 	var rightTexture:String;
 	var wrongTexture:String;
+	var reqItem:String;
+	var bonusOption:String;
 
-	public function new(textString:String, options:Array<String>, rightAnswer:Int, rightText:String, wrongText:String, rightTexture:String, wrongTexture:String) {
+	public function new(textString:String, options:Array<String>, rightAnswer:Int, rightText:String, wrongText:String, rightTexture:String, wrongTexture:String, player:Player, bonusOption:String, reqItem:String) {
 		super();
 		this.rightAnswer = rightAnswer;
 		this.rightText = rightText;
 		this.wrongText = wrongText;
 		this.rightTexture = rightTexture;
 		this.wrongTexture = wrongTexture;
+		this.reqItem = reqItem;
+		this.bonusOption = bonusOption;
 
 		background = new Image(Root.assets.getTexture("encounterScreen"));
 		addChild(background);
@@ -87,7 +92,7 @@ class DialogBox extends Sprite {
 			optionText.hAlign = starling.utils.HAlign.LEFT;
 			optionText.fontSize = 14;
 			optionText.x = 90;
-			optionText.y = y + 6;
+				optionText.y = y + 6;
 			addChild(optionText);
 
 			var button = new Button(Root.assets.getTexture("optionbutton"));
@@ -96,6 +101,23 @@ class DialogBox extends Sprite {
 			buttons.push(button);
 			addChild(button);
 			y += 50;
+		}
+		for(item in player.inventory){
+			if(item == "test"){
+				var optionText = new TextField(250, 30, bonusOption);
+				optionText.hAlign = starling.utils.HAlign.LEFT;
+				optionText.fontSize = 14;
+				optionText.x = 90;
+				optionText.y = y + 6;
+				addChild(optionText);
+
+				var button = new Button(Root.assets.getTexture("optionbutton"));
+				button.x = 50;
+				button.y = y;
+				buttons.push(button);
+				addChild(button);
+				y += 50;
+			}
 		}
 	}	
 

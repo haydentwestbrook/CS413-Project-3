@@ -42,6 +42,7 @@ class Player extends Sprite {
 		this.x = 450;
 		this.y = 30;
 		addChild(playerImg);
+		//inventory.push("test"); //testing functionality for special buttons
 	}
 
 	
