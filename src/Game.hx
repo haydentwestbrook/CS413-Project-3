@@ -10,6 +10,9 @@ import flash.ui.Keyboard;
 import starling.events.KeyboardEvent;
 import starling.text.TextField;
 import starling.utils.HAlign;
+import flash.media.SoundChannel;
+import flash.media.Sound;
+import flash.media.SoundMixer;
 import Root;
 
 class Game extends Sprite {
@@ -22,7 +25,14 @@ class Game extends Sprite {
 
 		var background:Image = new Image(Root.assets.getTexture("background"));
 		addChild(background);
-
+		
+		
+		var ambience:Sound = Root.assets.getSound("ambience");
+		var soundChannel:SoundChannel;
+		soundChannel  = ambience.play(0,9999);
+		
+		//var fire:SoundChannel = Root.assets.playSound("firecrackle");
+			//fire;
 		//Add player
 		player = new Player();	
 		addChild(player);
