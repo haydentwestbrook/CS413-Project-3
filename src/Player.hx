@@ -34,7 +34,8 @@ class Player extends Sprite {
 	public function new () {
 		super();
 		//playerImg = Root.assets.getTexture("player");
-		health = 10;
+		ranNum = Math.round(Math.random() * 6);
+		health = 10-ranNum;
 		playerImg = new Image(Root.assets.getTexture("player"));
 		this.x = 450;
 		this.y = 30;
@@ -47,12 +48,12 @@ class Player extends Sprite {
 		inventory.push(name);
 		displayInv();
 	}
-	public function displayInv() {
+	public function displayInv():String {
 		invString = "";
 		for (i in 0...inventory.length) {
 			invString += inventory[i] + " ";
 		}
-		textfield = new TextField(350, 200, invString); // Adjust for heigh and width of game
+		return invString;
 	}
 
 }		

@@ -8,6 +8,8 @@ import starling.display.Image;
 import starling.display.DisplayObject;
 import flash.ui.Keyboard;
 import starling.events.KeyboardEvent;
+import starling.text.TextField;
+import starling.utils.HAlign;
 import Root;
 
 class Game extends Sprite {
@@ -24,6 +26,16 @@ class Game extends Sprite {
 		//Add player
 		player = new Player();	
 		addChild(player);
+
+		//Add player health
+		var playerHealth = new TextField(80, 50, "Health: " + player.health);
+		addChild(playerHealth);
+
+		//Display inventory
+		var playerInventory = new TextField(1000, 50, "Inventory: " + player.displayInv());
+		playerInventory.hAlign = starling.utils.HAlign.LEFT;
+		playerInventory.x = 80;
+		addChild(playerInventory);
 
 		//Add encounters
 		encounters = new Array<Encounter>();
@@ -70,7 +82,11 @@ class Game extends Sprite {
 	    else if((player.y + player.height)>= stage.stageHeight){
 	    	player.y = oldY; //placeholder
 	    }
+	    var winSituation = true;
 	    for(encounter in encounters){ //pseudo-code, will check items on stage and see if they intersect with the player, then will prompt the player for action based on the item.
+	    	if(!encounter.visited){
+	    		winSituation = false;
+	    	}
 	    	var bound1 = player.bounds;
 	    	var bound2 = encounter.bounds;
 	    	if (bound1.intersects(bound2)){
@@ -78,6 +94,12 @@ class Game extends Sprite {
 	    		player.y = oldY;
 	    		encounter.activateEncounter();
 	    	}
+	    }
+	    if(winSituation){
+	    	trace("You win!");
+	    }
+	    if(player.health <=0){
+	    	trace("You lose!");
 	    }
 	}
 	
