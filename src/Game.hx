@@ -8,6 +8,8 @@ import starling.display.Image;
 import starling.display.DisplayObject;
 import flash.ui.Keyboard;
 import starling.events.KeyboardEvent;
+import starling.text.TextField;
+import starling.utils.HAlign;
 import Root;
 
 class Game extends Sprite {
@@ -24,6 +26,16 @@ class Game extends Sprite {
 		//Add player
 		player = new Player();	
 		addChild(player);
+
+		//Add player health
+		var playerHealth = new TextField(80, 50, "Health: " + player.health);
+		addChild(playerHealth);
+
+		//Display inventory
+		var playerInventory = new TextField(1000, 50, "Inventory: " + player.displayInv());
+		playerInventory.hAlign = starling.utils.HAlign.LEFT;
+		playerInventory.x = 80;
+		addChild(playerInventory);
 
 		//Add encounters
 		encounters = new Array<Encounter>();

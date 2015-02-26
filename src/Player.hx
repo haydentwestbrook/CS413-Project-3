@@ -48,12 +48,12 @@ class Player extends Sprite {
 		inventory.push(name);
 		displayInv();
 	}
-	public function displayInv() {
+	public function displayInv():String {
 		invString = "";
 		for (i in 0...inventory.length) {
 			invString += inventory[i] + " ";
 		}
-		textfield = new TextField(350, 200, invString); // Adjust for heigh and width of game
+		return invString;
 	}
 
 }		
