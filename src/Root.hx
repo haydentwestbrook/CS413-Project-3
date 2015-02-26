@@ -9,6 +9,10 @@ import starling.core.Starling;
 import starling.display.Image;
 import starling.display.DisplayObject;
 import starling.events.KeyboardEvent;
+import starling.text.TextField;
+import starling.text.BitmapFont;
+import starling.textures.Texture;
+import flash.xml.XML;
 import flash.ui.Keyboard;
 
 class Root extends Sprite {
@@ -67,6 +71,7 @@ class Root extends Sprite {
 	}
 
 	public function addMenu() {
+
 		var menu = new Menu();
 		menu.alpha = 0;
 		addChild(menu);

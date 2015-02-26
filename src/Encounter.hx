@@ -10,6 +10,7 @@ import starling.display.DisplayObject;
 import starling.events.Event;
 import starling.events.KeyboardEvent;
 import flash.ui.Keyboard;
+import starling.text.BitmapFont;
 import Root;
 
 class Encounter extends Sprite {
@@ -18,7 +19,9 @@ class Encounter extends Sprite {
 	public var dialogBox:DialogBox;
 	public var visited:Bool;
 
-	public function new(texture:String, textString:String, options:Array<String>, rightAnswer:Int, rightText:String, wrongText:String, rightTexture:String, wrongTexture:String, x:Int, y:Int,player, bonusOption:String, reqItem:String) {
+	public function new(texture:String, textString:String, options:Array<String>, rightAnswer:Int, rightText:String, wrongText:String, 
+						rightTexture:String, wrongTexture:String, x:Int, y:Int,player, bonusOption:String, reqItem:String, 
+						maxHealthLoss:Int, minHealthLoss:Int) {
 		super();
 
 		image = new Image(Root.assets.getTexture(texture));
@@ -26,7 +29,8 @@ class Encounter extends Sprite {
 		image.y = y;
 		addChild(image);
 
-		dialogBox = new DialogBox(textString, options, rightAnswer, rightText, wrongText, rightTexture, wrongTexture, player, bonusOption, reqItem);
+		dialogBox = new DialogBox(textString, options, rightAnswer, rightText, wrongText, rightTexture, wrongTexture, player, 
+								  bonusOption, reqItem, maxHealthLoss, minHealthLoss);
 		
 
 		//Starling.current.stage.addEventListener(KeyboardEvent.KEY_DOWN, activateEncounter);
@@ -62,8 +66,10 @@ class DialogBox extends Sprite {
 	var wrongTexture:String;
 	var reqItem:String;
 	var bonusOption:String;
+	var minHealthLoss:Int;
+	var maxHealthLoss:Int;
 
-	public function new(textString:String, options:Array<String>, rightAnswer:Int, rightText:String, wrongText:String, rightTexture:String, wrongTexture:String, player:Player, bonusOption:String, reqItem:String) {
+	public function new(textString:String, options:Array<String>, rightAnswer:Int, rightText:String, wrongText:String, rightTexture:String, wrongTexture:String, player:Player, bonusOption:String, reqItem:String, maxHealthLoss:Int, minHealthLoss:Int) {
 		super();
 		this.rightAnswer = rightAnswer;
 		this.rightText = rightText;
@@ -72,6 +78,8 @@ class DialogBox extends Sprite {
 		this.wrongTexture = wrongTexture;
 		this.reqItem = reqItem;
 		this.bonusOption = bonusOption;
+		this.minHealthLoss = minHealthLoss;
+		this.maxHealthLoss = maxHealthLoss;
 
 		background = new Image(Root.assets.getTexture("encounterScreen"));
 		addChild(background);
@@ -159,6 +167,15 @@ class DialogBox extends Sprite {
 	}
 
 	public function fail() {
+		if(maxHealthLoss > 0) {
+			var rand = Std.random(maxHealthLoss);
+			if(rand < minHealthLoss) {
+				rand = minHealthLoss;
+			}
+			cast (this.parent.parent, Game).player.health -= rand;
+		}
+
+
 		text.text = wrongText;
 		var x = cast(parent,Encounter).image.x;
 		var y = cast(parent,Encounter).image.y;
