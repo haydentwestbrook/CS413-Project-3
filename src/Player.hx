@@ -26,8 +26,7 @@ class Player extends Sprite {
 	*/
 	
 	public var invString:String;
-	public var thirst:Int;
-	public var hunger:Int;
+	public var health:Int;
 	public var inventory:Array<String> = new Array();
 	public var ranNum:Int;
 	public var playerImg:Image;
@@ -36,8 +35,7 @@ class Player extends Sprite {
 		super();
 		//playerImg = Root.assets.getTexture("player");
 		ranNum = Math.round(Math.random() * 6);
-		thirst = 10-ranNum;
-		hunger = 4+ranNum;
+		health = 10-ranNum;
 		playerImg = new Image(Root.assets.getTexture("player"));
 		this.x = 450;
 		this.y = 30;

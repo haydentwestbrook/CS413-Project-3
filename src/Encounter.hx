@@ -103,7 +103,7 @@ class DialogBox extends Sprite {
 			y += 50;
 		}
 		for(item in player.inventory){
-			if(item == "test"){
+			if(item == reqItem){
 				var optionText = new TextField(250, 30, bonusOption);
 				optionText.hAlign = starling.utils.HAlign.LEFT;
 				optionText.fontSize = 14;

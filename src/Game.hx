@@ -70,7 +70,11 @@ class Game extends Sprite {
 	    else if((player.y + player.height)>= stage.stageHeight){
 	    	player.y = oldY; //placeholder
 	    }
+	    var winSituation = true;
 	    for(encounter in encounters){ //pseudo-code, will check items on stage and see if they intersect with the player, then will prompt the player for action based on the item.
+	    	if(!encounter.visited){
+	    		winSituation = false;
+	    	}
 	    	var bound1 = player.bounds;
 	    	var bound2 = encounter.bounds;
 	    	if (bound1.intersects(bound2)){
@@ -78,6 +82,12 @@ class Game extends Sprite {
 	    		player.y = oldY;
 	    		encounter.activateEncounter();
 	    	}
+	    }
+	    if(winSituation){
+	    	trace("You win!");
+	    }
+	    if(player.health <=0){
+	    	trace("You lose!");
 	    }
 	}
 	
