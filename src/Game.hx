@@ -46,7 +46,7 @@ class Game extends Sprite {
 									  "Good job! Now you can fill the canteen with fresh water. Make sure your water source is not stagnant",
 									  "Food might be in limited supply, but you shouldn't eat the canteen",
 									  "","", 200, 75, player, "test", "test", 1, 3, "canteen"));
-		
+
 		encounters.push(new Encounter("river", "You found a river!", ["Drink water", "Walk away"], 1, 
 									  "Good job! Stagnant water should be treated before drinking.",
 									  "Oh no! Stagnant water is the perfect breeding ground for bacteria and parasites, which can lead to serious sickness!",
@@ -57,8 +57,8 @@ class Game extends Sprite {
 									  "Oh no! The berries are poisonous! You should never eat anything you can not identify.", 
 									  "", "", 640, 300, player, "test", "test", 1, 3, ""));
 
-		encounters.push(new Encounter("bear", "Its a bear!", ["Fight!", "Run", "Play dead"], 2, 
-									  "Good Job!", "Oh no! The bear ate you. \n\n Grizzly Bears can run up to 30 mph. (Bring a slow friend).",
+		encounters.push(new Encounter("bear", "Look out! Its a grizzly bear and its going to attack you! What should you do?", ["Stand your ground and make yourself bigger. Acting tough will drive it away.", "Run away!", "Stay calm, back away slowly and don't make eye contact."], 2, 
+									  "Good Job! IF you encounter a grizzly bear, you should try to not get close and show you are not a threat. Bear spray is also important has has been shown to be about 92 percent effective at deterring bears.", "Oh no! The bear attacked you! \n\n Grizzly bears often see eye contact as an act of aggression, so acting tough will only provoke them. Also never try to out run a grizzly bear, they can run up to 30 mph. (Bring a slow friend).",
 									  "", "", 500, 500, player, "test", "test", 100, 101, ""));
 		
 		encounters.push(new Encounter("log", "You found a log!", ["Build a Fire", "Eat the Log"], 0, 
