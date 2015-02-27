@@ -64,7 +64,7 @@ class Game extends Sprite {
 		encounters.push(new Encounter("log", "You found a log!", ["Build a Fire", "Eat the Log"], 1, 
 									  "You shouldn't eat the log. Wood is hard to digest",
 									  "Good Job! Hardwoods, like Aspen, burn longer and hotter than softer woods.",
-									  "log","log", 1000, 30, player, "test", "test"));
+									  "","fire", 1000, 30, player, "test", "test", 0, 0));
 		//Add encounters to stage
 		for (encounter in encounters) {
 			addChild(encounter);

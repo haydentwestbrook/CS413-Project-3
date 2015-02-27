@@ -204,9 +204,9 @@ class DialogBox extends Sprite {
 		text.text = wrongText;
 		var x = cast(parent,Encounter).image.x;
 		var y = cast(parent,Encounter).image.y;
-		removeChild(cast(parent, Encounter).image);
-		if(rightTexture != "") {
-			var image = new Image(Root.assets.getTexture(rightTexture));
+		parent.removeChild(cast(parent, Encounter).image);
+		if(wrongTexture != "") {
+			var image = new Image(Root.assets.getTexture(wrongTexture));
 			image.x = x;
 			image.y = y;
 			cast (parent, Encounter).addChild(image);
