@@ -203,6 +203,7 @@ class Menu extends Sprite {
 
 		startButton = new Button(Root.assets.getTexture("startbutton"));
 		startButton.name = "start";
+<<<<<<< HEAD
 		startButton.x = 575;
 		startButton.y = 300;
 		this.addChild(startButton);
@@ -210,12 +211,26 @@ class Menu extends Sprite {
 		tutorialButton = new Button(Root.assets.getTexture("tutorialbutton"));
 		tutorialButton.x = 575;
 		tutorialButton.y = 400;
+=======
+		startButton.x = 590;
+		startButton.y = 400;
+		this.addChild(startButton);
+
+		tutorialButton = new Button(Root.assets.getTexture("tutorialbutton"));
+		tutorialButton.x = 590;
+		tutorialButton.y = 500;
+>>>>>>> 19087c6ba1a52054cb1c1669321c3d481d68a6a8
 		tutorialButton.name = "tutorial";
 		this.addChild(tutorialButton);
 
 		creditsButton = new Button(Root.assets.getTexture("creditsbutton"));
+<<<<<<< HEAD
 		creditsButton.x = 575;
 		creditsButton.y = 500;
+=======
+		creditsButton.x = 590;
+		creditsButton.y = 600;
+>>>>>>> 19087c6ba1a52054cb1c1669321c3d481d68a6a8
 		creditsButton.name = "credits";
 		this.addChild(creditsButton);
 	}
@@ -274,8 +289,8 @@ class Credits extends Sprite {
 		addChild(creditsBackground);
 		this.addChild(backButton);
 
-		backButton.x = 50;
-		backButton.y = 520;
+		backButton.x = 80;
+		backButton.y = 590;
 	}
 }
 
@@ -292,20 +307,34 @@ class GameOver extends Sprite {
 		root.addChild(this);
 
 		var background:Image;
+		var returnButton:Button;
 		if(win) {
 			background = new Image(Root.assets.getTexture("win"));
+			returnButton = new Button(Root.assets.getTexture("menubutton"));
+			returnButton.x = 720;
+			returnButton.y = 340;
+			returnButton.name = "return";
+			root.addChild(returnButton);
 			flash.media.SoundMixer.stopAll();
 		} else {
 			background = new Image(Root.assets.getTexture("gameover"));
+			returnButton = new Button(Root.assets.getTexture("menubutton"));
+			returnButton.x = 580;
+			returnButton.y = 230;
+			returnButton.name = "return";
 			flash.media.SoundMixer.stopAll();
 		}
 		root.addChild(background);
+		root.addChild(returnButton);
 
 		root.addEventListener(Event.TRIGGERED, root.menuButtonClicked);
+<<<<<<< HEAD
 		var returnButton = new Button(Root.assets.getTexture("menubutton"));
 		returnButton.x = 580;
 		returnButton.y = 625;
 		returnButton.name = "return";
 		root.addChild(returnButton);
+=======
+>>>>>>> 19087c6ba1a52054cb1c1669321c3d481d68a6a8
 	}
 }
