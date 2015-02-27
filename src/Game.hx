@@ -44,10 +44,16 @@ class Game extends Sprite {
 		encounters = new Array<Encounter>();
 
 
+
 		encounters.push(new Encounter("river", "You found a river!", ["Drink water", "Walk away"], 1, 
 									  "Good job! Stagnant water should be treated before drinking.",
 									  "Oh no! Stagnant water is the perfect breeding ground for bacteria and parasites, which can lead to serious sickness!",
 									  "","", 0, 0, player, "Fill canteen", "canteen", 1, 3, ""));
+
+		encounters.push(new Encounter("preTent", "You found a tent!", ["Assemble Tent", "Leave Tent"], 0, 
+									  "Nice work! Now you have a safe shelter from the weather, and bugs.",
+									  "You really want to leave a perfectly good tent? Did you know there are over 3,500 species of mosquitos? Suit yourself.",
+									  "tent","", 450, 40, player, "test", "test", 1, 4, ""));
 
 		encounters.push(new Encounter("canteen", "You found a canteen!", ["Eat the Canteen", "Pickup the Canteen"], 1, 
 							  		  "Good job! Now you can fill the canteen with fresh water. Make sure your water source is not stagnant",
@@ -67,18 +73,6 @@ class Game extends Sprite {
 									  "Good Job! Hardwoods, like Aspen, burn longer and hotter than softer woods.",
 									  "You shouldn't eat the log. Wood is hard to digest",
 									  "fire","", 1000, 30, player, "test", "test", 1, 4, ""));
-
-		/*encounters.push(new Encounter("preTent", "You found a tent!", ["Assemble Tent", "Leave Tent"], 0,
-									 "Nice work! Now you have shelter from weather and bugs! (But not bears, don't be fooled)",
-									 "Really? You're going to leave a perfectly good tent? Did you know there are over 3,500 species of mosquitos?",
-									 "tent", "", 750, 40, player, "test", "test", 2, 3, ""));
-
-		*/
-
-		encounters.push(new Encounter("preTent", "You found a tent!", ["Assemble Tent", "Leave Tent"], 0, 
-									  "Nice work! Now you have a safe shelter from the weather, and bugs.",
-									  "You really want to leave a perfectly good tent? Did you know there are over 3,500 species of mosquitos? Suit yourself.",
-									  "tent","", 750, 40, player, "test", "test", 1, 4, ""));
 
 		//Add encounters to stage
 		for (encounter in encounters) {
