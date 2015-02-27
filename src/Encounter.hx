@@ -57,6 +57,8 @@ class Encounter extends Sprite {
 		Starling.current.stage.removeEventListeners();
 		Starling.current.stage.addEventListener(KeyboardEvent.KEY_DOWN, cast (this.parent, Game).movement);
 
+		cast(this.parent, Game).updatePlayerInfo();
+
 		var winSituation = true;
 		for(encounter in cast(this.parent, Game).encounters) {
 			if(!encounter.visited){
@@ -202,9 +204,9 @@ class DialogBox extends Sprite {
 		text.text = wrongText;
 		var x = cast(parent,Encounter).image.x;
 		var y = cast(parent,Encounter).image.y;
-		removeChild(cast(parent, Encounter).image);
-		if(rightTexture != "") {
-			var image = new Image(Root.assets.getTexture(rightTexture));
+		parent.removeChild(cast(parent, Encounter).image);
+		if(wrongTexture != "") {
+			var image = new Image(Root.assets.getTexture(wrongTexture));
 			image.x = x;
 			image.y = y;
 			cast (parent, Encounter).addChild(image);
