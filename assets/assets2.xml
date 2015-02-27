@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
+<!-- $TexturePacker:SmartUpdate:80da9a0d11ad52491ed0eb9feb91358d:ce240a7a0c4dd258994136b2c46570e9:71446ab2a758a48027fdd302dbac6076$ -->
+<TextureAtlas imagePath="assets2.png">
+    <SubTexture name="menu" x="2" y="2" width="1280" height="720"/>
+    <SubTexture name="tutorialBackground" x="2" y="724" width="1280" height="720"/>
+</TextureAtlas>
