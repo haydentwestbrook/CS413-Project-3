@@ -203,19 +203,19 @@ class Menu extends Sprite {
 
 		startButton = new Button(Root.assets.getTexture("startbutton"));
 		startButton.name = "start";
-		startButton.x = 250;
-		startButton.y = 200;
+		startButton.x = 590;
+		startButton.y = 400;
 		this.addChild(startButton);
 
 		tutorialButton = new Button(Root.assets.getTexture("tutorialbutton"));
-		tutorialButton.x = 250;
-		tutorialButton.y = 300;
+		tutorialButton.x = 590;
+		tutorialButton.y = 500;
 		tutorialButton.name = "tutorial";
 		this.addChild(tutorialButton);
 
 		creditsButton = new Button(Root.assets.getTexture("creditsbutton"));
-		creditsButton.x = 250;
-		creditsButton.y = 400;
+		creditsButton.x = 590;
+		creditsButton.y = 600;
 		creditsButton.name = "credits";
 		this.addChild(creditsButton);
 	}
