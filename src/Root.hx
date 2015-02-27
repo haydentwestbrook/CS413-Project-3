@@ -270,7 +270,7 @@ class Tutorial extends Sprite {
 		this.addChild(backButton);
 
 		backButton.x = 50;
-		backButton.y = 520;
+		backButton.y = 600;
 	}
 }
 
