@@ -85,17 +85,22 @@ class Game extends Sprite {
 									  "You really want to leave a perfectly good tent? Did you know there are over 3,500 species of mosquitos? Suit yourself.",
 									  "tent","", 750, 40, player, "test", "test", 1, 4, ""));
 
+		encounters.push(new Encounter("snake", "Its a snake! If you are ever bitten by a poisonous snake, what should you do?", ["Suck out the venom.", "Apply ice to the bite.", "Do not overly exert yourself and try to seek medical attention."], 2, 
+									  "Nice work! Only trained medical professionals are going to be able to effectively treat a snake bite.",
+									  "Trying the suck the venom out has no positive effect on a snake bite. Ice also has no effect and can cause more harm than good. The best option is to not exert yourself and attempt to get medical attention.",
+									  "","", 1200, 230, player, "test", "test", 4, 8, ""));
+
 		//Add encounters to stage
 		for (encounter in encounters) {
 			addChild(encounter);
 		}
 
 		//Add player health
-		playerHealth = new TextField(120, 50, "Health: " + player.health, "font");
+		playerHealth = new TextField(120, 50, "Health: " + player.health, "font", 24, 0xFFFFFF);
 		addChild(playerHealth);
 
 		//Display inventory
-		playerInventory = new TextField(1000, 50, "Inventory: " + player.displayInv(), "font");
+		playerInventory = new TextField(1000, 50, "Inventory: " + player.displayInv(), "font", 24, 0xFFFFFF);
 		playerInventory.hAlign = starling.utils.HAlign.LEFT;
 		playerInventory.x = 120;
 		addChild(playerInventory);
