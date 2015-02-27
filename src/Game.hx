@@ -39,15 +39,6 @@ class Game extends Sprite {
 		player = new Player();	
 		addChild(player);
 
-		//Add player health
-		playerHealth = new TextField(80, 50, "Health: " + player.health);
-		addChild(playerHealth);
-
-		//Display inventory
-		playerInventory = new TextField(1000, 50, "Inventory: " + player.displayInv());
-		playerInventory.hAlign = starling.utils.HAlign.LEFT;
-		playerInventory.x = 80;
-		addChild(playerInventory);
 
 		//Add encounters
 		encounters = new Array<Encounter>();
@@ -68,11 +59,27 @@ class Game extends Sprite {
 		 encounters.push(new Encounter("canteen", "You found a canteen!", ["Eat the Canteen", "Pickup the Canteen"], 1, 
 									  "Good job! Now you can fill the canteen with fresh water. Make sure your water source is not stagnant",
 									  "Food might be in limited supply, but you shouldn't eat the canteen",
-									  "","canteen", 200, 75, player, "test", "test", 0, 3, ""));
+									  "","", 200, 75, player, "test", "test", 0, 3, ""));
+ 		 encounters.push(new Encounter("river", "You found a canteen!", ["Eat the Canteen", "Pickup the Canteen"], 1, 
+									  "Good job! Now you can fill the canteen with fresh water. Make sure your water source is not stagnant",
+									  "Food might be in limited supply, but you shouldn't eat the canteen",
+									  "","", 0, 0, player, "test", "test", 0, 3, ""));
+
 		//Add encounters to stage
 		for (encounter in encounters) {
 			addChild(encounter);
 		}
+
+		//Add player health
+		playerHealth = new TextField(80, 50, "Health: " + player.health);
+		addChild(playerHealth);
+
+		//Display inventory
+		playerInventory = new TextField(1000, 50, "Inventory: " + player.displayInv());
+		playerInventory.hAlign = starling.utils.HAlign.LEFT;
+		playerInventory.x = 80;
+		addChild(playerInventory);
+
 		Starling.current.stage.addEventListener(KeyboardEvent.KEY_DOWN, movement);
 	}
 
