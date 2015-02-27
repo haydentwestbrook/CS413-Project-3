@@ -42,6 +42,7 @@ class Encounter extends Sprite {
 
 	public function activateEncounter() {
 		if(!visited) {
+			dialogBox.activateDialog();
 			addChild(dialogBox);
 			if (this.thisTexture == "bear") {
 				var beargrowl:SoundChannel = Root.assets.playSound("beargrowlshort");
@@ -93,6 +94,7 @@ class DialogBox extends Sprite {
 	var maxHealthLoss:Int;
 	var addedItem:String;
 	var player:Player;
+	var optionsLength:Int;
 
 	public function new(textString:String, options:Array<String>, rightAnswer:Int, rightText:String, wrongText:String, 
 						rightTexture:String, wrongTexture:String, bonusOption:String, reqItem:String,
@@ -109,6 +111,8 @@ class DialogBox extends Sprite {
 		this.maxHealthLoss = maxHealthLoss;
 		this.addedItem = addedItem;
 		this.player = player;
+		this.optionsLength = options.length;
+		this.options = options;
 
 		background = new Image(Root.assets.getTexture("encounterScreen"));
 		addChild(background);
@@ -121,43 +125,6 @@ class DialogBox extends Sprite {
 		text.x = 275;
 		text.y = 40;
 		addChild(text);
-
-		buttons = new Array<Button>();
-		var y = 40;
-		
-		
-		for(option in options) {
-			var optionText = new TextField(250, 30, option);
-			optionText.hAlign = starling.utils.HAlign.LEFT;
-			optionText.fontSize = 14;
-			optionText.x = 90;
-				optionText.y = y + 6;
-			addChild(optionText);
-
-			var button = new Button(Root.assets.getTexture("optionbutton"));
-			button.x = 50;
-			button.y = y;
-			buttons.push(button);
-			addChild(button);
-			y += 50;
-		}
-		for(item in player.inventory){
-			if(item == reqItem){
-				var optionText = new TextField(250, 30, bonusOption);
-				optionText.hAlign = starling.utils.HAlign.LEFT;
-				optionText.fontSize = 14;
-				optionText.x = 90;
-				optionText.y = y + 6;
-				addChild(optionText);
-
-				var button = new Button(Root.assets.getTexture("optionbutton"));
-				button.x = 50;
-				button.y = y;
-				buttons.push(button);
-				addChild(button);
-				y += 50;
-			}
-		}
 	}	
 
 	public function buttonHandler(event:Event) {
@@ -169,12 +136,42 @@ class DialogBox extends Sprite {
 
 		var i = 0;
 		for(button in buttons) {
-			if(button == buttonEvent && i == rightAnswer) {
+			if(button == buttonEvent && (i == rightAnswer || i == optionsLength)) {
+				if(i == optionsLength) {
+					player.inventory.remove(reqItem);
+				}
 				success();
 			} else if(button == buttonEvent && i != rightAnswer) {
 				fail();
 			}
 			i++;
+		}
+	}
+
+	public function activateDialog() {
+		buttons = new Array<Button>();
+		var y = 40;
+		
+		for(item in player.inventory){
+			if(item == reqItem){
+				options.push(bonusOption);
+			}
+		}
+
+		for(option in options) {
+			var optionText = new TextField(250, 30, option);
+			optionText.hAlign = starling.utils.HAlign.LEFT;
+			optionText.fontSize = 14;
+			optionText.x = 90;
+			optionText.y = y + 6;
+			addChild(optionText);
+
+			var button = new Button(Root.assets.getTexture("optionbutton"));
+			button.x = 50;
+			button.y = y;
+			buttons.push(button);
+			addChild(button);
+			y += 50;
 		}
 	}
 
