@@ -11,6 +11,9 @@ import starling.events.Event;
 import starling.events.KeyboardEvent;
 import flash.ui.Keyboard;
 import starling.text.BitmapFont;
+import flash.media.SoundChannel;
+import flash.media.Sound;
+import flash.media.SoundMixer;
 import Root;
 import Root.GameOver;
 
@@ -19,17 +22,17 @@ class Encounter extends Sprite {
 	public var image:Image;
 	public var dialogBox:DialogBox;
 	public var visited:Bool;
-
+	public var thisTexture:String;
 	public function new(texture:String, textString:String, options:Array<String>, rightAnswer:Int, rightText:String, wrongText:String, 
 						rightTexture:String, wrongTexture:String, x:Int, y:Int,player, bonusOption:String, reqItem:String, 
 						maxHealthLoss:Int, minHealthLoss:Int) {
 		super();
 
 		image = new Image(Root.assets.getTexture(texture));
+		thisTexture = texture;
 		image.x = x;
 		image.y = y;
 		addChild(image);
-
 		dialogBox = new DialogBox(textString, options, rightAnswer, rightText, wrongText, rightTexture, wrongTexture, player, 
 								  bonusOption, reqItem, maxHealthLoss, minHealthLoss);
 		
@@ -40,6 +43,9 @@ class Encounter extends Sprite {
 	public function activateEncounter() {
 		if(!visited) {
 			addChild(dialogBox);
+			if (this.thisTexture == "bear") {
+				var beargrowl:SoundChannel = Root.assets.playSound("beargrowlshort");
+			}
 			Starling.current.stage.removeEventListeners();
 			Starling.current.stage.addEventListener(Event.TRIGGERED, dialogBox.buttonHandler);
 		}
@@ -110,6 +116,8 @@ class DialogBox extends Sprite {
 
 		buttons = new Array<Button>();
 		var y = 40;
+		
+		
 		for(option in options) {
 			var optionText = new TextField(250, 30, option);
 			optionText.hAlign = starling.utils.HAlign.LEFT;

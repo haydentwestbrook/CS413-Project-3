@@ -10,7 +10,7 @@ game.swf: $(SOURCES)
 	-cp src \
 	-cp vendor \
 	-swf-version 11.8 \
-	-swf-header 650:650:60:ffffff \
+	-swf-header 1280:720:60:ffffff \
 	-main Startup \
 	-swf game.swf \
 	-swf-lib vendor/starling_1_6.swc --macro "patchTypes('vendor/starling.patch')"
