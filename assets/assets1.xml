@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
-<!-- $TexturePacker:SmartUpdate:dac11dd46af25822d0ee6f1fdba7aa19:7b99ee12b0757828ef0f3946407e9fb3:2d7851f37cea564001c19f7807495157$ -->
-<TextureAtlas imagePath="assets1.png">
-    <SubTexture name="credits" x="2" y="2" width="1289" height="720"/>
-    <SubTexture name="gameover" x="2" y="724" width="1280" height="720"/>
-</TextureAtlas>

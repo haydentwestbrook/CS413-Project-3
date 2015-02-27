@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
-<!-- $TexturePacker:SmartUpdate:1326587f94abd0ab4a2d968e219e774c:d1bd9a20e7dd6398b6c2343c1940ddfc:60f01fb69e5eadb409eab5a9a3ce8bc7$ -->
-<TextureAtlas imagePath="assets3.png">
-    <SubTexture name="win" x="2" y="2" width="1280" height="720"/>
-</TextureAtlas>

@@ -28,19 +28,37 @@ class Root extends Sprite {
 	public function start(startup:Startup) {
 
 		assets = new AssetManager();
-		assets.enqueue("assets/assets0.png");
-		assets.enqueue("assets/assets0.xml");
-		assets.enqueue("assets/assets1.png");
-		assets.enqueue("assets/assets1.xml");
-		assets.enqueue("assets/assets2.png");
-		assets.enqueue("assets/assets2.xml");
-		assets.enqueue("assets/assets3.png");
-		assets.enqueue("assets/assets3.xml");
-		
+		assets.enqueue("assets/startbutton.png");
+		assets.enqueue("assets/continueButton.png");
+		assets.enqueue("assets/tutorialbutton.png");
+		assets.enqueue("assets/credits.png");
+		assets.enqueue("assets/backbutton.png");
+		assets.enqueue("assets/background.png");
+		assets.enqueue("assets/creditsbutton.png");
+		assets.enqueue("assets/menu.png");
+		assets.enqueue("assets/menubutton.png");
+		assets.enqueue("assets/menuselect.mp3");
+		assets.enqueue("assets/tutorialBackground.png");
+		assets.enqueue("assets/berrybush.png");
+		assets.enqueue("assets/bear.png");
+		assets.enqueue("assets/blackbear.png");
+		assets.enqueue("assets/player.png");
+		assets.enqueue("assets/encounterScreen.png");
+		assets.enqueue("assets/optionbutton.png");
+		assets.enqueue("assets/closebutton.png");
+		assets.enqueue("assets/gameover.png");
+		assets.enqueue("assets/win.png");
 		assets.enqueue("assets/ambience.mp3");
 		assets.enqueue("assets/beargrowlshort.mp3");
 		assets.enqueue("assets/firecrackle.mp3");
-		
+		assets.enqueue("assets/log.png");
+		assets.enqueue("assets/canteen.png");
+		assets.enqueue("assets/tent.png");
+		assets.enqueue("assets/fire.png");
+		assets.enqueue("assets/river.png");
+		assets.enqueue("assets/preTent.png");
+		assets.enqueue("assets/tent.png");
+		assets.enqueue("assets/snake.png");
 		assets.enqueue("assets/font.png");
 		assets.enqueue("assets/font.fnt");
 
