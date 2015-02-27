@@ -24,8 +24,8 @@ class Encounter extends Sprite {
 	public var visited:Bool;
 	public var thisTexture:String;
 	public function new(texture:String, textString:String, options:Array<String>, rightAnswer:Int, rightText:String, wrongText:String, 
-						rightTexture:String, wrongTexture:String, x:Int, y:Int,player, bonusOption:String, reqItem:String, 
-						maxHealthLoss:Int, minHealthLoss:Int) {
+						rightTexture:String, wrongTexture:String, x:Int, y:Int, player:Player, bonusOption:String, reqItem:String, 
+						maxHealthLoss:Int, minHealthLoss:Int, addedItem:String) {
 		super();
 
 		image = new Image(Root.assets.getTexture(texture));
@@ -33,8 +33,8 @@ class Encounter extends Sprite {
 		image.x = x;
 		image.y = y;
 		addChild(image);
-		dialogBox = new DialogBox(textString, options, rightAnswer, rightText, wrongText, rightTexture, wrongTexture, player, 
-								  bonusOption, reqItem, maxHealthLoss, minHealthLoss);
+		dialogBox = new DialogBox(textString, options, rightAnswer, rightText, wrongText, rightTexture, wrongTexture, 
+								  bonusOption, reqItem, maxHealthLoss, minHealthLoss, addedItem, player);
 		
 
 		//Starling.current.stage.addEventListener(KeyboardEvent.KEY_DOWN, activateEncounter);
@@ -91,8 +91,12 @@ class DialogBox extends Sprite {
 	var bonusOption:String;
 	var minHealthLoss:Int;
 	var maxHealthLoss:Int;
+	var addedItem:String;
+	var player:Player;
 
-	public function new(textString:String, options:Array<String>, rightAnswer:Int, rightText:String, wrongText:String, rightTexture:String, wrongTexture:String, player:Player, bonusOption:String, reqItem:String, maxHealthLoss:Int, minHealthLoss:Int) {
+	public function new(textString:String, options:Array<String>, rightAnswer:Int, rightText:String, wrongText:String, 
+						rightTexture:String, wrongTexture:String, bonusOption:String, reqItem:String,
+						maxHealthLoss:Int, minHealthLoss:Int, addedItem:String, player:Player) {
 		super();
 		this.rightAnswer = rightAnswer;
 		this.rightText = rightText;
@@ -103,6 +107,8 @@ class DialogBox extends Sprite {
 		this.bonusOption = bonusOption;
 		this.minHealthLoss = minHealthLoss;
 		this.maxHealthLoss = maxHealthLoss;
+		this.addedItem = addedItem;
+		this.player = player;
 
 		background = new Image(Root.assets.getTexture("encounterScreen"));
 		addChild(background);
@@ -189,6 +195,10 @@ class DialogBox extends Sprite {
 		closeButton.y = 200;
 		closeButton.name = "close";
 		addChild(closeButton);
+
+		if(addedItem != "") {
+			player.inventory.push(addedItem);
+		}
 	}
 
 	public function fail() {

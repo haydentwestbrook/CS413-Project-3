@@ -54,17 +54,22 @@ class Game extends Sprite {
 		encounters.push(new Encounter("berrybush", "Its a berry bush! You are unable to idenitify the type of berries it has. What do you do?", ["Eat the berries", "Leave them alone"], 1, 
 									  "Good Job! You should never eat something you are unable identify.", 
 									  "Oh no! The berries are poisonous! You should never eat anything you can not identify.", 
-									  "berrybush", "berrybush", 200, 300, player, "test", "test", 1, 3));
+									  "berrybush", "berrybush", 200, 300, player, "test", "test", 1, 3, ""));
 
 		encounters.push(new Encounter("bear", "Its a bear!", ["Fight!", "Run", "Play dead"], 2, 
 									  "Good Job!", 
+<<<<<<< HEAD
 									  "Oh no! The bear ate you. \n\n Grizzly Bears can run up to 30 mph. (Bring a slow friend).",
 									  "", "bear", 500, 500, player, "test", "test", 100, 101));
+=======
+									  "Oh no! The bear ate you.",
+									  "", "bear", 500, 500, player, "test", "test", 100, 101, ""));
+>>>>>>> b08597bd708daa529f747050d1af0be45fd1830a
 		
 		encounters.push(new Encounter("log", "You found a log!", ["Build a Fire", "Eat the Log"], 1, 
 									  "You shouldn't eat the log. Wood is hard to digest",
 									  "Good Job! Hardwoods, like Aspen, burn longer and hotter than softer woods.",
-									  "","fire", 1000, 30, player, "test", "test", 0, 0));
+									  "","fire", 1000, 30, player, "test", "test", 0, 0, ""));
 		//Add encounters to stage
 		for (encounter in encounters) {
 			addChild(encounter);
