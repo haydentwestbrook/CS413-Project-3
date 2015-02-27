@@ -274,8 +274,8 @@ class Credits extends Sprite {
 		addChild(creditsBackground);
 		this.addChild(backButton);
 
-		backButton.x = 50;
-		backButton.y = 520;
+		backButton.x = 80;
+		backButton.y = 590;
 	}
 }
 
@@ -292,20 +292,26 @@ class GameOver extends Sprite {
 		root.addChild(this);
 
 		var background:Image;
+		var returnButton:Button;
 		if(win) {
 			background = new Image(Root.assets.getTexture("win"));
+			returnButton = new Button(Root.assets.getTexture("menubutton"));
+			returnButton.x = 720;
+			returnButton.y = 340;
+			returnButton.name = "return";
+			root.addChild(returnButton);
 			flash.media.SoundMixer.stopAll();
 		} else {
 			background = new Image(Root.assets.getTexture("gameover"));
+			returnButton = new Button(Root.assets.getTexture("menubutton"));
+			returnButton.x = 580;
+			returnButton.y = 230;
+			returnButton.name = "return";
 			flash.media.SoundMixer.stopAll();
 		}
 		root.addChild(background);
+		root.addChild(returnButton);
 
 		root.addEventListener(Event.TRIGGERED, root.menuButtonClicked);
-		var returnButton = new Button(Root.assets.getTexture("menubutton"));
-		returnButton.x = 250;
-		returnButton.y = 300;
-		returnButton.name = "return";
-		root.addChild(returnButton);
 	}
 }
