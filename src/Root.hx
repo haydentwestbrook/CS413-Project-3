@@ -41,6 +41,7 @@ class Root extends Sprite {
 		assets.enqueue("assets/tutorialBackground.png");
 		assets.enqueue("assets/berrybush.png");
 		assets.enqueue("assets/bear.png");
+		assets.enqueue("assets/blackbear.png");
 		assets.enqueue("assets/player.png");
 		assets.enqueue("assets/encounterScreen.png");
 		assets.enqueue("assets/optionbutton.png");
@@ -55,6 +56,8 @@ class Root extends Sprite {
 		assets.enqueue("assets/tent.png");
 		assets.enqueue("assets/fire.png");
 		assets.enqueue("assets/river.png");
+		assets.enqueue("assets/preTent.png");
+		assets.enqueue("assets/tent/png");
 
 		assets.loadQueue(function onProgress(ratio:Float) {
 			

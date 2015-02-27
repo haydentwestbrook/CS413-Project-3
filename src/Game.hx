@@ -42,29 +42,48 @@ class Game extends Sprite {
 
 		//Add encounters
 		encounters = new Array<Encounter>();
+
+
 		encounters.push(new Encounter("river", "You found a river!", ["Drink water", "Walk away"], 1, 
 									  "Good job! Stagnant water should be treated before drinking.",
 									  "Oh no! Stagnant water is the perfect breeding ground for bacteria and parasites, which can lead to serious sickness!",
 									  "","", 0, 0, player, "Fill canteen", "canteen", 1, 3, ""));
 
 		encounters.push(new Encounter("canteen", "You found a canteen!", ["Eat the Canteen", "Pickup the Canteen"], 1, 
-									  "Good job! Now you can fill the canteen with fresh water. Make sure your water source is not stagnant",
-									  "Food might be in limited supply, but you shouldn't eat the canteen",
-									  "","", 200, 75, player, "test", "test", 1, 3, "canteen"));
+							  		  "Good job! Now you can fill the canteen with fresh water. Make sure your water source is not stagnant",
+							  		  "Food might be in limited supply, but you shouldn't eat the canteen",
+							 	 	  "","", 200, 300, player, "test", "test", 1, 3, "canteen"));
 
 		encounters.push(new Encounter("berrybush", "Its a berry bush! You are unable to idenitify the type of berries it has. What do you do?", ["Eat the berries", "Leave them alone"], 1, 
 									  "Good Job! You should never eat something you are unable identify.", 
 									  "Oh no! The berries are poisonous! You should never eat anything you can not identify.", 
-									  "", "", 640, 300, player, "test", "test", 1, 3, ""));
-
-		encounters.push(new Encounter("bear", "Its a bear!", ["Fight!", "Run", "Play dead"], 2, 
-									  "Good Job!", "Oh no! The bear ate you. \n\n Grizzly Bears can run up to 30 mph. (Bring a slow friend).",
-									  "", "", 500, 500, player, "test", "test", 100, 101, ""));
-		
+									  "berrybush", "berrybush", 640, 300, player, "test", "test", 1, 3, ""));
+		var rand = Std.random(2);
+		if(rand == 0) {
+			encounters.push(new Encounter("bear", "Look out! Its a grizzly bear and its going to attack you! What should you do?", ["Stand your ground and make yourself bigger. Acting tough will drive it away.", "Run away!", "Stay calm, back away slowly and don't make eye contact."], 2, 
+										  "Good Job! If you encounter a grizzly bear, you should try to not get close and show you are not a threat. Bear spray is also important as it has has been shown to be about 92 percent effective at deterring bears.", "Oh no! The bear attacked you! \n\n Grizzly bears often see eye contact as an act of aggression, so acting tough will only provoke them. Also never try to out run a grizzly bear, they can run up to 30 mph. (Bring a slow friend).",
+										  "", "", 950, 550, player, "test", "test", 100, 101, ""));
+		} else {
+			encounters.push(new Encounter("blackbear", "Look out! Its a black bear and its going to attack you! What should you do?", ["Stand your ground and make yourself bigger. Acting tough will drive it away.", "Run away!", "Offer the bear food."], 0, 
+										  "Good Job! Making yourself appear bigger than you are by waving your arms and making a lot of noise can scare the bear off. Bear spray is also important has has been shown to be about 92 percent effective at deterring bears.", "Oh no! The bear attacked you! \n\n Black bears are less fearsome than grizzly bears and can be scared off. But don't try to out run bears, they are too fast and it will only provoke them. Also never let them smell food on you as this can cause them to attack.",
+										  "", "", 950, 550, player, "test", "test", 100, 101, ""));
+		}
 		encounters.push(new Encounter("log", "You found a log!", ["Build a Fire", "Eat the Log"], 0, 
 									  "Good Job! Hardwoods, like Aspen, burn longer and hotter than softer woods.",
 									  "You shouldn't eat the log. Wood is hard to digest",
 									  "fire","", 1000, 30, player, "test", "test", 1, 4, ""));
+
+		/*encounters.push(new Encounter("preTent", "You found a tent!", ["Assemble Tent", "Leave Tent"], 0,
+									 "Nice work! Now you have shelter from weather and bugs! (But not bears, don't be fooled)",
+									 "Really? You're going to leave a perfectly good tent? Did you know there are over 3,500 species of mosquitos?",
+									 "tent", "", 750, 40, player, "test", "test", 2, 3, ""));
+
+		*/
+
+		encounters.push(new Encounter("preTent", "You found a tent!", ["Assemble Tent", "Leave Tent"], 0, 
+									  "Nice work! Now you have a safe shelter from the weather, and bugs.",
+									  "You really want to leave a perfectly good tent? Did you know there are over 3,500 species of mosquitos? Suit yourself.",
+									  "tent","", 750, 40, player, "test", "test", 1, 4, ""));
 
 		//Add encounters to stage
 		for (encounter in encounters) {
