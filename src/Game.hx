@@ -36,6 +36,7 @@ class Game extends Sprite {
 		//var fire:SoundChannel = Root.assets.playSound("firecrackle");
 			//fire;
 		//Add player
+
 		player = new Player();	
 		addChild(player);
 
@@ -50,10 +51,15 @@ class Game extends Sprite {
 									  "Oh no! Stagnant water is the perfect breeding ground for bacteria and parasites, which can lead to serious sickness!",
 									  "","", 0, 0, player, "Fill canteen", "canteen", 1, 3, ""));
 
+		encounters.push(new Encounter("log", "You found a log!", ["Build a Fire", "Eat the Log"], 0, 
+									  "Good Job! Hardwoods, like Aspen, burn longer and hotter than softer woods.",
+									  "You shouldn't eat the log. Wood is hard to digest",
+									  "fire","", 500, 550, player, "test", "test", 1, 4, ""));
+
 		encounters.push(new Encounter("preTent", "You found a tent!", ["Assemble Tent", "Leave Tent"], 0, 
 									  "Nice work! Now you have a safe shelter from the weather, and bugs.",
 									  "You really want to leave a perfectly good tent? Did you know there are over 3,500 species of mosquitos? Suit yourself.",
-									  "tent","", 450, 40, player, "test", "test", 1, 4, ""));
+									  "tent","", 800, 40, player, "test", "test", 1, 4, ""));
 
 		encounters.push(new Encounter("canteen", "You found a canteen!", ["Eat the Canteen", "Pickup the Canteen"], 1, 
 							  		  "Good job! Now you can fill the canteen with fresh water. Make sure your water source is not stagnant",
@@ -63,7 +69,7 @@ class Game extends Sprite {
 		encounters.push(new Encounter("berrybush", "Its a berry bush! You are unable to idenitify the type of berries it has. What do you do?", ["Eat the berries", "Leave them alone"], 1, 
 									  "Good Job! You should never eat something you are unable identify.", 
 									  "Oh no! The berries are poisonous! You should never eat anything you can not identify.", 
-									  "berrybush", "berrybush", 640, 300, player, "test", "test", 1, 3, ""));
+									  "berrybush", "berrybush", 700, 350, player, "test", "test", 1, 3, ""));
 		var rand = Std.random(2);
 		if(rand == 0) {
 			encounters.push(new Encounter("bear", "Look out! Its a grizzly bear and its going to attack you! What should you do?", ["Stand your ground and make yourself bigger. Acting tough will drive it away.", "Run away!", "Stay calm, back away slowly and don't make eye contact."], 2, 
@@ -74,10 +80,7 @@ class Game extends Sprite {
 										  "Good Job! Making yourself appear bigger than you are by waving your arms and making a lot of noise can scare the bear off. Bear spray is also important has has been shown to be about 92 percent effective at deterring bears.", "Oh no! The bear attacked you! \n\n Black bears are less fearsome than grizzly bears and can be scared off. But don't try to out run bears, they are too fast and it will only provoke them. Also never let them smell food on you as this can cause them to attack.",
 										  "", "", 950, 550, player, "test", "test", 100, 101, ""));
 		}
-		encounters.push(new Encounter("log", "You found a log!", ["Build a Fire", "Eat the Log"], 0, 
-									  "Good Job! Hardwoods, like Aspen, burn longer and hotter than softer woods.",
-									  "You shouldn't eat the log. Wood is hard to digest",
-									  "fire","", 1000, 30, player, "test", "test", 1, 4, ""));
+	
 
 		//Add encounters to stage
 		for (encounter in encounters) {
@@ -101,16 +104,16 @@ class Game extends Sprite {
 		var oldX = player.x;
 		var oldY = player.y;
 	    if (event.keyCode == Keyboard.LEFT) {
-	    	player.x -= 10; //placeholder
+	    	player.x -= 20; //placeholder
 	    }
 	    else if(event.keyCode == Keyboard.RIGHT) {
-	    	player.x += 10; //placeholder
+	    	player.x += 20; //placeholder
 	    }
 	    else if(event.keyCode == Keyboard.UP) {
-	    	player.y -= 10; //placeholder
+	    	player.y -= 20; //placeholder
 	    }
 	    else if(event.keyCode == Keyboard.DOWN) {
-	    	player.y += 10; //placeholder
+	    	player.y += 20; //placeholder
 	    }
 	    if(player.x <= 0){
 	    	player.x = 0;  //placeholder

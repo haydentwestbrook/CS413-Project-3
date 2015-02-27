@@ -121,7 +121,8 @@ class DialogBox extends Sprite {
 		text = new TextField(250, 600, textString, "font");
 		text.hAlign = starling.utils.HAlign.LEFT;
 		text.vAlign = starling.utils.VAlign.TOP;
-		text.fontSize = 14;
+		text.fontSize = 14
+		;
 		text.x = 350;
 		text.y = 40;
 		addChild(text);

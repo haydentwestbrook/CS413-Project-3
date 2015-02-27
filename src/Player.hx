@@ -37,7 +37,7 @@ class Player extends Sprite {
 		ranNum = Math.round(Math.random() * 6);
 		health = 10-ranNum;
 		playerImg = new Image(Root.assets.getTexture("player"));
-		this.x = 750;
+		this.x = 600;
 		this.y = 30;
 		addChild(playerImg);
 		//inventory.push("test"); //testing functionality for special buttons
