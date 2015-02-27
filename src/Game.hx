@@ -59,7 +59,7 @@ class Game extends Sprite {
 									  "Oh no! The bear ate you.",
 									  "", "bear", 500, 500, player, "test", "test", 100, 101));
 		//Add encounters to stage
-		for(encounter in encounters) {
+		for (encounter in encounters) {
 			addChild(encounter);
 		}
 		Starling.current.stage.addEventListener(KeyboardEvent.KEY_DOWN, movement);
