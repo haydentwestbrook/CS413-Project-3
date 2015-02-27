@@ -85,13 +85,13 @@ class Game extends Sprite {
 		}
 
 		//Add player health
-		playerHealth = new TextField(80, 50, "Health: " + player.health);
+		playerHealth = new TextField(120, 50, "Health: " + player.health, "font");
 		addChild(playerHealth);
 
 		//Display inventory
-		playerInventory = new TextField(1000, 50, "Inventory: " + player.displayInv());
+		playerInventory = new TextField(1000, 50, "Inventory: " + player.displayInv(), "font");
 		playerInventory.hAlign = starling.utils.HAlign.LEFT;
-		playerInventory.x = 80;
+		playerInventory.x = 120;
 		addChild(playerInventory);
 
 		Starling.current.stage.addEventListener(KeyboardEvent.KEY_DOWN, movement);

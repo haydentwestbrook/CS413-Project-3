@@ -118,7 +118,7 @@ class DialogBox extends Sprite {
 		addChild(background);
 		
 
-		text = new TextField(250, 600, textString);
+		text = new TextField(250, 600, textString, "font");
 		text.hAlign = starling.utils.HAlign.LEFT;
 		text.vAlign = starling.utils.VAlign.TOP;
 		text.fontSize = 14;
@@ -159,7 +159,7 @@ class DialogBox extends Sprite {
 		}
 
 		for(option in options) {
-			var optionText = new TextField(250, 400, option);
+			var optionText = new TextField(250, 400, option, "font");
 			optionText.hAlign = starling.utils.HAlign.LEFT;
 			optionText.vAlign = starling.utils.VAlign.TOP;
 			optionText.fontSize = 14;
