@@ -221,7 +221,7 @@ class DialogBox extends Sprite {
 		}
 
 		closeButton = new Button(Root.assets.getTexture("closebutton"));
-		closeButton.x = 275;
+		closeButton.x = 350;
 		closeButton.y = 200;
 		closeButton.name = "close";
 		addChild(closeButton);
