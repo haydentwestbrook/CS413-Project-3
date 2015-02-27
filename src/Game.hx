@@ -58,7 +58,7 @@ class Game extends Sprite {
 
 		encounters.push(new Encounter("bear", "Its a bear!", ["Fight!", "Run", "Play dead"], 2, 
 									  "Good Job!", 
-									  "Oh no! The bear ate you.",
+									  "Oh no! The bear ate you. \n\n Grizzly Bears can run up to 30 mph. (Bring a slow friend).",
 									  "", "bear", 500, 500, player, "test", "test", 100, 101));
 		
 		encounters.push(new Encounter("log", "You found a log!", ["Build a Fire", "Eat the Log"], 1, 
