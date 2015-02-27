@@ -1,4 +1,4 @@
-FLEX_SDK = C:/flex
+FLEX_SDK = ~/flexsdk
 ADL = $(FLEX_SDK)/bin/adl
 AMXMLC = $(FLEX_SDK)/bin/amxmlc
 SOURCES = src/*.hx assets/loading.png
@@ -16,7 +16,7 @@ game.swf: $(SOURCES)
 	-swf-lib vendor/starling_1_6.swc --macro "patchTypes('vendor/starling.patch')"
 
 clean:
-	rm game.swf *~ src/*~
+	rm -rf game.swf *~ src/*~
 
 test: game.swf
 	$(ADL) -profile tv -screensize 1280x720:1280x720 game.xml
