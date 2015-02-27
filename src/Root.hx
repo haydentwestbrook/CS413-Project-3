@@ -45,6 +45,8 @@ class Root extends Sprite {
 		assets.enqueue("assets/encounterScreen.png");
 		assets.enqueue("assets/optionbutton.png");
 		assets.enqueue("assets/closebutton.png");
+		assets.enqueue("assets/gameover.png");
+		assets.enqueue("assets/win.png");
 
 		assets.loadQueue(function onProgress(ratio:Float) {
 			
@@ -267,16 +269,27 @@ class GameOver extends Sprite {
 	public var background:Image;
 	public var returnButton:Button;
 
-	public function new() {
+	public function new(win:Bool, encounter:Encounter) {
 		super();
+
 		Starling.current.stage.removeEventListeners();
-		background = new Image(Root.assets.getTexture("gameover"));
-		addChild(background);
-		addEventListener(Event.TRIGGERED, cast (parent, Root).menuButtonClicked);
-		returnButton = new Button(Root.assets.getTexture("menubutton"));
+		var root:Root = cast (encounter.parent.parent, Root);
+		root.removeChildren();
+		root.addChild(this);
+
+		var background:Image;
+		if(win) {
+			background = new Image(Root.assets.getTexture("win"));
+		} else {
+			background = new Image(Root.assets.getTexture("gameover"));
+		}
+		root.addChild(background);
+
+		root.addEventListener(Event.TRIGGERED, root.menuButtonClicked);
+		var returnButton = new Button(Root.assets.getTexture("menubutton"));
 		returnButton.x = 250;
 		returnButton.y = 300;
 		returnButton.name = "return";
-		addChild(returnButton);
+		root.addChild(returnButton);
 	}
 }

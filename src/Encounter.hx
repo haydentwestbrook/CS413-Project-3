@@ -12,6 +12,7 @@ import starling.events.KeyboardEvent;
 import flash.ui.Keyboard;
 import starling.text.BitmapFont;
 import Root;
+import Root.GameOver;
 
 class Encounter extends Sprite {
 
@@ -49,6 +50,20 @@ class Encounter extends Sprite {
 		removeChild(dialogBox);
 		Starling.current.stage.removeEventListeners();
 		Starling.current.stage.addEventListener(KeyboardEvent.KEY_DOWN, cast (this.parent, Game).movement);
+
+		var winSituation = true;
+		for(encounter in cast(this.parent, Game).encounters) {
+			if(!encounter.visited){
+		    		winSituation = false;
+		    	}
+		}
+		if(winSituation){
+		    var gameOver = new GameOver(true, this);
+		}
+	    if(cast(this.parent, Game).player.health <=0){
+	    	var gameOver = new GameOver(false, this);
+	    }
+
 	}
 }
 
