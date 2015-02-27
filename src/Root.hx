@@ -203,19 +203,19 @@ class Menu extends Sprite {
 
 		startButton = new Button(Root.assets.getTexture("startbutton"));
 		startButton.name = "start";
-		startButton.x = 250;
-		startButton.y = 200;
+		startButton.x = 575;
+		startButton.y = 300;
 		this.addChild(startButton);
 
 		tutorialButton = new Button(Root.assets.getTexture("tutorialbutton"));
-		tutorialButton.x = 250;
-		tutorialButton.y = 300;
+		tutorialButton.x = 575;
+		tutorialButton.y = 400;
 		tutorialButton.name = "tutorial";
 		this.addChild(tutorialButton);
 
 		creditsButton = new Button(Root.assets.getTexture("creditsbutton"));
-		creditsButton.x = 250;
-		creditsButton.y = 400;
+		creditsButton.x = 575;
+		creditsButton.y = 500;
 		creditsButton.name = "credits";
 		this.addChild(creditsButton);
 	}
@@ -303,8 +303,8 @@ class GameOver extends Sprite {
 
 		root.addEventListener(Event.TRIGGERED, root.menuButtonClicked);
 		var returnButton = new Button(Root.assets.getTexture("menubutton"));
-		returnButton.x = 250;
-		returnButton.y = 300;
+		returnButton.x = 580;
+		returnButton.y = 625;
 		returnButton.name = "return";
 		root.addChild(returnButton);
 	}
