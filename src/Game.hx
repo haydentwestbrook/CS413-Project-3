@@ -66,6 +66,18 @@ class Game extends Sprite {
 									  "You shouldn't eat the log. Wood is hard to digest",
 									  "fire","", 1000, 30, player, "test", "test", 1, 4, ""));
 
+		/*encounters.push(new Encounter("preTent", "You found a tent!", ["Assemble Tent", "Leave Tent"], 0,
+									 "Nice work! Now you have shelter from weather and bugs! (But not bears, don't be fooled)",
+									 "Really? You're going to leave a perfectly good tent? Did you know there are over 3,500 species of mosquitos?",
+									 "tent", "", 750, 40, player, "test", "test", 2, 3, ""));
+
+		*/
+
+		encounters.push(new Encounter("preTent", "You found a tent!", ["Assemble Tent", "Leave Tent"], 0, 
+									  "Nice work! Now you have a safe shelter from the weather, and bugs.",
+									  "You really want to leave a perfectly good tent? Did you know there are over 3,500 species of mosquitos? Suit yourself.",
+									  "tent","", 750, 40, player, "test", "test", 1, 4, ""));
+
 		//Add encounters to stage
 		for (encounter in encounters) {
 			addChild(encounter);
