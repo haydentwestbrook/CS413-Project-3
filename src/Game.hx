@@ -64,6 +64,12 @@ class Game extends Sprite {
 									  "You shouldn't eat the log. Wood is hard to digest",
 									  "Good Job! Hardwoods, like Aspen, burn longer and hotter than softer woods.",
 									  "","fire", 1000, 30, player, "test", "test", 0, 0, ""));
+
+		 encounters.push(new Encounter("canteen", "You found a canteen!", ["Eat the Canteen", "Pickup the Canteen"], 1, 
+									  "Good job! Now you can fill the canteen with fresh water. Make sure your water source is not stagnant",
+									  "Food might be in limited supply, but you shouldn't eat the canteen",
+									  "","canteen", 200, 75, player, "test", "test", 0, 3, ""));
+
 		//Add encounters to stage
 		for (encounter in encounters) {
 			addChild(encounter);
