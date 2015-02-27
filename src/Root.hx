@@ -57,7 +57,9 @@ class Root extends Sprite {
 		assets.enqueue("assets/fire.png");
 		assets.enqueue("assets/river.png");
 		assets.enqueue("assets/preTent.png");
-		assets.enqueue("assets/tent/png");
+		assets.enqueue("assets/tent.png");
+		assets.enqueue("assets/font.png");
+		assets.enqueue("assets/font.fnt");
 
 		assets.loadQueue(function onProgress(ratio:Float) {
 			
