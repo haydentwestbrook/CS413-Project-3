@@ -57,6 +57,8 @@ class Encounter extends Sprite {
 		Starling.current.stage.removeEventListeners();
 		Starling.current.stage.addEventListener(KeyboardEvent.KEY_DOWN, cast (this.parent, Game).movement);
 
+		cast(this.parent, Game).updatePlayerInfo();
+
 		var winSituation = true;
 		for(encounter in cast(this.parent, Game).encounters) {
 			if(!encounter.visited){

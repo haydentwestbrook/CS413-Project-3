@@ -18,6 +18,8 @@ import Root;
 class Game extends Sprite {
 
 	public var player:Player;
+	public var playerHealth:TextField;
+	public var playerInventory:TextField;
 	public var encounters:Array<Encounter>;
 
 	public function new() {
@@ -38,11 +40,11 @@ class Game extends Sprite {
 		addChild(player);
 
 		//Add player health
-		var playerHealth = new TextField(80, 50, "Health: " + player.health);
+		playerHealth = new TextField(80, 50, "Health: " + player.health);
 		addChild(playerHealth);
 
 		//Display inventory
-		var playerInventory = new TextField(1000, 50, "Inventory: " + player.displayInv());
+		playerInventory = new TextField(1000, 50, "Inventory: " + player.displayInv());
 		playerInventory.hAlign = starling.utils.HAlign.LEFT;
 		playerInventory.x = 80;
 		addChild(playerInventory);
@@ -102,5 +104,9 @@ class Game extends Sprite {
 	    	}
 	    }
 	}
-	
+
+	public function updatePlayerInfo() {
+		playerHealth.text = "Health: " + player.health;
+		playerInventory.text = "Inventory: " + player.displayInv();
+	}
 }
