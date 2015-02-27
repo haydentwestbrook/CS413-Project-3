@@ -287,8 +287,10 @@ class GameOver extends Sprite {
 		var background:Image;
 		if(win) {
 			background = new Image(Root.assets.getTexture("win"));
+			flash.media.SoundMixer.stopAll();
 		} else {
 			background = new Image(Root.assets.getTexture("gameover"));
+			flash.media.SoundMixer.stopAll();
 		}
 		root.addChild(background);
 
